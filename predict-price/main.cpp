@@ -30,7 +30,11 @@ void addToHistory(const string& analysis) {
 
 // Function to enter stock prices
 void inputPrices() {
+<<<<<<< HEAD
     int n;
+=======
+int n;
+>>>>>>> e2ea4e9f612e0b4cbf990d2b6ac0c49e598f3653
     cout << "Enter number of days of stock data: ";
     cin >> n;
     if (n < 2) {
@@ -39,7 +43,11 @@ void inputPrices() {
     }
     prices.clear(); // Reset previous data
     prices.resize(n);
+<<<<<<< HEAD
     cout << "Enter " << n << " stock prices (space-separated):\n";
+=======
+    cout << "Enter " << n << " stock prices :\n";
+>>>>>>> e2ea4e9f612e0b4cbf990d2b6ac0c49e598f3653
     for (int i = 0; i < n; ++i) {
       cout << "Enter price "<<i+1<<": ";
         cin >> prices[i];
@@ -59,15 +67,64 @@ void inputPrices() {
     cout << "Returning to menu...\n";
     cout << "Stock data loaded successfully.\n";
     addToHistory("Loaded " + to_string(n) + " days of stock data");
+<<<<<<< HEAD
+=======
+
+>>>>>>> e2ea4e9f612e0b4cbf990d2b6ac0c49e598f3653
 }
 
 // Function to calculate maximum profit
 void calculateMaxProfit() {
+<<<<<<< HEAD
     if (prices.empty()) {
+=======
+if (prices.empty()) {
+>>>>>>> e2ea4e9f612e0b4cbf990d2b6ac0c49e598f3653
         cout << "No stock data entered. Please enter data first.\n";
         int choice;
         cout << "Do you want to enter data now? (enter 1 to Yes or enter 0 to No): \n";
         cin >> choice;
+<<<<<<< HEAD
+=======
+        
+        if (choice == 1) {
+            inputPrices();
+        }
+        else {
+            cout << "Returning to main menu...\n";
+        }
+        return;
+    }
+
+    int minPrice = INT_MAX;
+    int maxProfit = 0;
+    int buyDay = 0, sellDay = 0;
+    int currentMinDay = 0;
+
+    cout << "\nAnalyzing stock prices for maximum profit...\n";
+    for (int i = 0; i < prices.size(); ++i) {
+        for (int j = i + 1; j < prices.size(); ++j) {
+            int profit = prices[j] - prices[i];
+            if (profit > maxProfit) {
+                maxProfit = profit;
+                buyDay = i;
+                sellDay = j;
+            }
+        }
+    }
+
+    if (maxProfit > 0) {
+        cout << "Max Profit = " << maxProfit << "\n";
+        cout << "Buy on Day " << buyDay + 1 << " (Price = " << prices[buyDay] << ")\n";
+        cout << "Sell on Day " << sellDay + 1 << " (Price = " << prices[sellDay] << ")\n";
+        addToHistory("Max Profit Analysis: Profit=" + to_string(maxProfit) + 
+                     ", Buy Day=" + to_string(buyDay+1) + 
+                     ", Sell Day=" + to_string(sellDay+1));
+    } else {
+        cout << "No profitable opportunity found.\n";
+        addToHistory("Max Profit Analysis: No profitable opportunity found");
+    }
+>>>>>>> e2ea4e9f612e0b4cbf990d2b6ac0c49e598f3653
 
         if (choice == 1) {
             inputPrices();
