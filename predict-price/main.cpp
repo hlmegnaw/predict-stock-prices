@@ -23,6 +23,36 @@ void addToHistory(const string& analysis) {
 
 // Function to enter stock prices
 void inputPrices() {
+int n;
+    cout << "Enter number of days of stock data: ";
+    cin >> n;
+    if (n < 2) {
+        cout << "You need at least 2 days of data.\n";
+        return;
+    }
+    prices.clear(); // Reset previous data
+    prices.resize(n);
+    cout << "Enter " << n << " stock prices :\n";
+    for (int i = 0; i < n; ++i) {
+      cout << "Enter price "<<i+1<<": ";
+        cin >> prices[i];
+        cout<<endl;
+        while (prices[i] < 0) {
+            cout << "Price cannot be negative. Please enter a valid price: ";
+            cin >> prices[i];
+        }
+    }
+    int back;
+    cout << "Enter 0 to go back to menu: ";
+    cin >> back;
+    while (back != 0) {
+        cout << "Invalid input. Please enter 0 to return: ";
+        cin >> back;
+    }
+    cout << "Returning to menu...\n";
+    cout << "Stock data loaded successfully.\n";
+    addToHistory("Loaded " + to_string(n) + " days of stock data");
+
 }
 // Function to calculate maximum profit
 void calculateMaxProfit() {
