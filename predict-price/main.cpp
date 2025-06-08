@@ -56,6 +56,49 @@ int n;
 }
 // Function to calculate maximum profit
 void calculateMaxProfit() {
+if (prices.empty()) {
+        cout << "No stock data entered. Please enter data first.\n";
+        int choice;
+        cout << "Do you want to enter data now? (enter 1 to Yes or enter 0 to No): \n";
+        cin >> choice;
+        
+        if (choice == 1) {
+            inputPrices();
+        }
+        else {
+            cout << "Returning to main menu...\n";
+        }
+        return;
+    }
+
+    int minPrice = INT_MAX;
+    int maxProfit = 0;
+    int buyDay = 0, sellDay = 0;
+    int currentMinDay = 0;
+
+    cout << "\nAnalyzing stock prices for maximum profit...\n";
+    for (int i = 0; i < prices.size(); ++i) {
+        for (int j = i + 1; j < prices.size(); ++j) {
+            int profit = prices[j] - prices[i];
+            if (profit > maxProfit) {
+                maxProfit = profit;
+                buyDay = i;
+                sellDay = j;
+            }
+        }
+    }
+
+    if (maxProfit > 0) {
+        cout << "Max Profit = " << maxProfit << "\n";
+        cout << "Buy on Day " << buyDay + 1 << " (Price = " << prices[buyDay] << ")\n";
+        cout << "Sell on Day " << sellDay + 1 << " (Price = " << prices[sellDay] << ")\n";
+        addToHistory("Max Profit Analysis: Profit=" + to_string(maxProfit) + 
+                     ", Buy Day=" + to_string(buyDay+1) + 
+                     ", Sell Day=" + to_string(sellDay+1));
+    } else {
+        cout << "No profitable opportunity found.\n";
+        addToHistory("Max Profit Analysis: No profitable opportunity found");
+    }
 
     }
 void InvestmentStrategy() {
