@@ -30,11 +30,10 @@ void addToHistory(const string& analysis) {
 
 // Function to enter stock prices
 void inputPrices() {
-<<<<<<< HEAD
-    int n;
-=======
+
+    
+
 int n;
->>>>>>> e2ea4e9f612e0b4cbf990d2b6ac0c49e598f3653
     cout << "Enter number of days of stock data: ";
     cin >> n;
     if (n < 2) {
@@ -67,25 +66,20 @@ int n;
     cout << "Returning to menu...\n";
     cout << "Stock data loaded successfully.\n";
     addToHistory("Loaded " + to_string(n) + " days of stock data");
-<<<<<<< HEAD
-=======
 
->>>>>>> e2ea4e9f612e0b4cbf990d2b6ac0c49e598f3653
 }
 
 // Function to calculate maximum profit
 void calculateMaxProfit() {
-<<<<<<< HEAD
     if (prices.empty()) {
-=======
+
 if (prices.empty()) {
->>>>>>> e2ea4e9f612e0b4cbf990d2b6ac0c49e598f3653
         cout << "No stock data entered. Please enter data first.\n";
         int choice;
         cout << "Do you want to enter data now? (enter 1 to Yes or enter 0 to No): \n";
         cin >> choice;
-<<<<<<< HEAD
-=======
+
+
         
         if (choice == 1) {
             inputPrices();
@@ -124,7 +118,6 @@ if (prices.empty()) {
         cout << "No profitable opportunity found.\n";
         addToHistory("Max Profit Analysis: No profitable opportunity found");
     }
->>>>>>> e2ea4e9f612e0b4cbf990d2b6ac0c49e598f3653
 
         if (choice == 1) {
             inputPrices();
@@ -293,19 +286,20 @@ void trendAnalysisBFS() {
 
 // Function to change day limit
 void changeDayLimit() {
-    cout << "Current day limit: " << dayLimit << "\n";
+   cout << "Current day limit: " << dayLimit << "\n";
     cout << "Enter new day limit (2-30): ";
     int newLimit;
     cin >> newLimit;
-
+    
     while (newLimit < 2 || newLimit > 30) {
         cout << "Invalid range. Please enter between 2 and 30: ";
         cin >> newLimit;
     }
-
+    
     dayLimit = newLimit;
     cout << "Day limit set to " << dayLimit << " days\n";
     addToHistory("Changed day limit to " + to_string(dayLimit));
+
 }
 
 // New function for Menu 6: Price Volatility Analysis
